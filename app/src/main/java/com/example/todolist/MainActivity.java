@@ -17,7 +17,8 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    private List<Task> list;
+    static List<Task> list;
+   static TaskListadapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,21 +36,21 @@ public class MainActivity extends AppCompatActivity {
 
         Task[] items={
                 new Task("aaaa"),
-                new Task("bbbb"),
-                new Task("cccc"),
-                new Task("dddd"),
-                new Task("eeee"),
-                new Task("ffff"),
-                new Task("gggg"),
-                new Task("hhhh"),
-                new Task("iiii"),
+                new Task("bbbb")
+//                new Task("cccc"),
+//                new Task("dddd"),
+//                new Task("eeee"),
+//                new Task("ffff"),
+//                new Task("gggg"),
+//                new Task("hhhh"),
+//                new Task("iiii"),
 
         };
         list = new ArrayList<>();
         list.addAll(Arrays.asList(items));
         RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        TaskListadapter adapter = new TaskListadapter(list);
+        adapter = new TaskListadapter(list);
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 

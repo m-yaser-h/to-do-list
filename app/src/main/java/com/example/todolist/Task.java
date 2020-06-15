@@ -5,10 +5,10 @@ import java.util.Date;
 public class Task {
     String title;
     String description;
-    Date date;
+    String date;
     boolean is_done;
 
-    public Task(String title, String description, Date date) {
+    public Task(String title, String description, String date) {
         this.title = title;
         this.description = description;
         this.date = date;
@@ -17,12 +17,13 @@ public class Task {
 
     public Task(String title) {
         this.title = title;
-        this.description =null;
+        this.description ="";
         this.date = null;
         this.is_done=false;
 
 
     }
+
 
     public String getTitle() {
         return title;
@@ -32,7 +33,7 @@ public class Task {
         return description;
     }
 
-    public Date getDate() {
+public String getDate() {
         return date;
     }
 
