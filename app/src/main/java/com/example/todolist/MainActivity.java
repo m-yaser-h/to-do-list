@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    static List<Task> list;
+    static List<Task> list = new ArrayList<>();
    static TaskListadapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 //                new Task("iiii"),
 
         };
-        list = new ArrayList<>();
+
         list.addAll(Arrays.asList(items));
         RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

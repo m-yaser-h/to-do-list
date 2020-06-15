@@ -50,7 +50,7 @@ public class Add_page_activity extends AppCompatActivity {
                 list.add(t1);
                 MainActivity.adapter.notifyDataSetChanged();
 
-               // startActivity(intent);
+                startActivity(intent);
             }
         });
 

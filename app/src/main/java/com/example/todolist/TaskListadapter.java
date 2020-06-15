@@ -1,5 +1,8 @@
 package com.example.todolist;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
     public TaskListadapter(List<Task> list) {
         this.list = list;
     }
+
 
     @NonNull
     @Override
@@ -41,17 +45,36 @@ public class TaskListadapter extends RecyclerView.Adapter {
     private class TaskViewHolder extends RecyclerView.ViewHolder{
         TextView TaskText;
         Switch is_done;
+        Context context;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             TaskText = itemView.findViewById(R.id.textView2);
             is_done = itemView.findViewById(R.id.switch1);
+            context = itemView.getContext();
 
         }
 
-        void bind(Task task){
+
+        void bind(final Task task){
             TaskText.setText(task.getTitle());
-            is_done.setChecked(task.is_done);
+            is_done.setChecked(task.isIs_done());
+
+            TaskText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context , Detail_Of_Task.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title",task.getTitle());
+                    bundle.putString("description",task.getDescription());
+                    bundle.putString("date",task.getDate());
+                    intent.putExtras(bundle);
+                    context .startActivity(intent);
+
+
+                }
+            });
 
         }
 
