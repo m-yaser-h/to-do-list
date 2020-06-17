@@ -32,6 +32,7 @@ public class Detail_Of_Task extends AppCompatActivity {
         input_description = bundle.getString("description");
         input_date = bundle.getString("date");
         title_in_detail.setText(input_title);
+
         description_in_detail.setText(input_description);
         date_in_detail.setText(input_date);
         is_done = bundle.getBoolean("is_done");

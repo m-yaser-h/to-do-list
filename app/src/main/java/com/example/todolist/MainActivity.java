@@ -20,7 +20,26 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     static List<Task> list = new ArrayList<>();
    static TaskListadapter adapter;
+    int num = 0 ;
 
+
+   public void firt_add_to_list(List<Task> list ){
+       Task[] items={
+               new Task("aaaa"),
+               new Task("bbbb")
+//                new Task("cccc"),
+//                new Task("dddd"),
+//                new Task("eeee"),
+//                new Task("ffff"),
+//                new Task("gggg"),
+//                new Task("hhhh"),
+//                new Task("iiii"),
+
+       };
+
+       list.addAll(Arrays.asList(items));
+
+   }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (num==0){
+            firt_add_to_list(list);
+            num++;
+        }
 
 
 
@@ -44,20 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Task[] items={
-                new Task("aaaa"),
-                new Task("bbbb")
-//                new Task("cccc"),
-//                new Task("dddd"),
-//                new Task("eeee"),
-//                new Task("ffff"),
-//                new Task("gggg"),
-//                new Task("hhhh"),
-//                new Task("iiii"),
 
-        };
-
-        list.addAll(Arrays.asList(items));
 
         RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
