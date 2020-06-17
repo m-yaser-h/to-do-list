@@ -32,9 +32,17 @@ public class TaskListadapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         TaskViewHolder tvh = (TaskViewHolder)holder;
         tvh.bind(list.get(position));
+        tvh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),Detail_Of_Task.class);
+                intent.putExtra("position",position);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -74,22 +82,22 @@ public class TaskListadapter extends RecyclerView.Adapter {
             });
 
 
-            TaskText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(context , Detail_Of_Task.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("title",task.getTitle());
-                    bundle.putString("description",task.getDescription());
-                    bundle.putString("date",task.getDate());
-                    bundle.putBoolean("is_done",task.isIs_done());
-                    intent.putExtras(bundle);
-                    context .startActivity(intent);
-
-
-                }
-            });
+//            TaskText.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Intent intent = new Intent(context , Detail_Of_Task.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("title",task.getTitle());
+//                    bundle.putString("description",task.getDescription());
+//                    bundle.putString("date",task.getDate());
+//                    bundle.putBoolean("is_done",task.isIs_done());
+//                    intent.putExtras(bundle);
+//                    context .startActivity(intent);
+//
+//
+//                }
+//            });
 
 
 
