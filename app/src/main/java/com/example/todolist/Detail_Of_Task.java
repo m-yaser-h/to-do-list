@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -37,6 +38,14 @@ public class Detail_Of_Task extends AppCompatActivity {
         date_in_detail.setText(input_date);
         is_done = bundle.getBoolean("is_done");
         switch_in_detail.setChecked(is_done);
+        switch_in_detail.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    is_done=isChecked;
+                    MainActivity.adapter.notifyDataSetChanged();
+
+            }
+        });
 
 
     }
