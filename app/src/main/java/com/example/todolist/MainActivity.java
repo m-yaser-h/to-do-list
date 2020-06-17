@@ -19,11 +19,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     static List<Task> list = new ArrayList<>();
    static TaskListadapter adapter;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final Intent intent = new Intent(this, Add_page_activity.class);
         Button button = this.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         Task[] items={
                 new Task("aaaa"),
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         list.addAll(Arrays.asList(items));
+
         RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TaskListadapter(list);

@@ -7,6 +7,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -60,6 +61,19 @@ public class TaskListadapter extends RecyclerView.Adapter {
             TaskText.setText(task.getTitle());
             is_done.setChecked(task.isIs_done());
 
+
+
+            is_done.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked)
+                        task.is_done=true;
+                    else
+                        task.is_done=false;
+                }
+            });
+
+
             TaskText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,12 +83,15 @@ public class TaskListadapter extends RecyclerView.Adapter {
                     bundle.putString("title",task.getTitle());
                     bundle.putString("description",task.getDescription());
                     bundle.putString("date",task.getDate());
+                    bundle.putBoolean("is_done",task.isIs_done());
                     intent.putExtras(bundle);
                     context .startActivity(intent);
 
 
                 }
             });
+
+
 
         }
 

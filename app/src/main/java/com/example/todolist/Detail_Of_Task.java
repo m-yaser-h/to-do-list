@@ -17,6 +17,7 @@ public class Detail_Of_Task extends AppCompatActivity {
     String input_description;
     String input_date;
     Intent intent;
+    boolean is_done;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,8 @@ public class Detail_Of_Task extends AppCompatActivity {
         title_in_detail.setText(input_title);
         description_in_detail.setText(input_description);
         date_in_detail.setText(input_date);
-
+        is_done = bundle.getBoolean("is_done");
+        switch_in_detail.setChecked(is_done);
 
 
     }
