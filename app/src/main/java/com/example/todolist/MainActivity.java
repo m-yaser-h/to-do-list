@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,13 +22,18 @@ public class MainActivity extends AppCompatActivity {
    static TaskListadapter adapter;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
+
 
         final Intent intent = new Intent(this, Add_page_activity.class);
         Button button = this.findViewById(R.id.button);
