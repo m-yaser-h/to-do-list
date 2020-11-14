@@ -33,7 +33,7 @@ public class Task {
         return description;
     }
 
-public String getDate() {
+    public String getDate() {
         return date;
     }
 
