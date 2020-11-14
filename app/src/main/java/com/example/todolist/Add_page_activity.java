@@ -35,11 +35,16 @@ public class Add_page_activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_do_list);
-        final Intent intent = new Intent(this, MainActivity.class);
+
         Button button = this.findViewById(R.id.add_button);
-          final EditText title_edit_text = (EditText)findViewById(R.id.title_editText);
-          final EditText description_edit_text = (EditText)findViewById(R.id.description_editText);
-         final TextView date_edit_text = findViewById(R.id.tvDate);
+        final EditText title_edit_text = (EditText)findViewById(R.id.title_editText);
+        final EditText description_edit_text = (EditText)findViewById(R.id.description_editText);
+        final TextView date_edit_text = findViewById(R.id.tvDate);
+        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+
+        final Intent intent = new Intent(this, MainActivity.class);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +61,7 @@ public class Add_page_activity extends AppCompatActivity {
 
 
 
-        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

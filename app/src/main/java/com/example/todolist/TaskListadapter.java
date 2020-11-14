@@ -75,9 +75,9 @@ public class TaskListadapter extends RecyclerView.Adapter {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked)
-                        task.is_done=true;
+                        task.setIs_done(true);
                     else
-                        task.is_done=false;
+                        task.setIs_done(false);
                 }
             });
 

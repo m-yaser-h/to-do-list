@@ -20,12 +20,12 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    static List<Task> list = new ArrayList<>();
-   static TaskListadapter adapter;
+    static ArrayList<Task> list = new ArrayList<Task>();
+    static TaskListadapter adapter;
     int num = 0 ;
 
 
-   public void firt_add_to_list(List<Task> list ){
+   public void first_add_to_list(List<Task> list ){
        Task[] items={
               // new Task("aaaa"),
                //new Task("bbbb")
@@ -49,30 +49,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FloatingActionButton fab = this.findViewById(R.id.floatingActionButton3);
+        RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
 
            // firt_add_to_list(list);
 
 
 
-
-
-
-
-
-
-        final Intent intent = new Intent(this, Add_page_activity.class);
-
-        FloatingActionButton fab = this.findViewById(R.id.floatingActionButton3);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Add_page_activity.class);
                 startActivity(intent);
             }
         });
 
 
 
-        RecyclerView recyclerView = this.findViewById(R.id.recyclerView);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TaskListadapter(list);
         recyclerView.setAdapter(adapter);

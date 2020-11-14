@@ -47,13 +47,13 @@ public class Detail_Of_Task extends AppCompatActivity {
 
         title_in_detail.setText(MainActivity.list.get(position).getTitle());
         description_in_detail.setText(MainActivity.list.get(position).getDescription());
-        switch_in_detail.setChecked(MainActivity.list.get(position).is_done);
+        switch_in_detail.setChecked(MainActivity.list.get(position).isIs_done());
         date_in_detail.setText(MainActivity.list.get(position).getDate());
 
         switch_in_detail.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    MainActivity.list.get(position).is_done=isChecked;
+                    MainActivity.list.get(position).setIs_done(isChecked);
                     MainActivity.adapter.notifyDataSetChanged();
 
             }

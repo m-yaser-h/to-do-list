@@ -3,10 +3,10 @@ package com.example.todolist;
 import java.util.Date;
 
 public class Task {
-    String title;
-    String description;
-    String date;
-    boolean is_done;
+    private String title;
+    private String description;
+    private String date;
+    private boolean is_done;
 
     public Task(String title, String description, String date) {
         this.title = title;
@@ -39,6 +39,22 @@ public class Task {
 
     public boolean isIs_done() {
         return is_done;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setIs_done(boolean is_done) {
+        this.is_done = is_done;
     }
 }
 
