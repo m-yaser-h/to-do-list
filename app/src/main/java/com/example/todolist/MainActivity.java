@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     static ArrayList<Task> list = new ArrayList<Task>();
     static TaskListadapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
