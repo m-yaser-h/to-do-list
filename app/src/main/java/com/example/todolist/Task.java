@@ -15,15 +15,6 @@ public class Task {
         this.is_done=false;
     }
 
-    public Task(String title) {
-        this.title = title;
-        this.description ="";
-        this.date = null;
-        this.is_done=false;
-
-
-    }
-
 
     public String getTitle() {
         return title;
@@ -39,18 +30,6 @@ public class Task {
 
     public boolean isIs_done() {
         return is_done;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public void setIs_done(boolean is_done) {
