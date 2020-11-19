@@ -81,11 +81,10 @@ public class TaskListadapter extends RecyclerView.Adapter {
 //            Log.i("year",dates[2]);
 
 
-
             Calendar cal = Calendar.getInstance();
             int current_year = cal.get(Calendar.YEAR);
             int current_month = cal.get(Calendar.MONTH);
-            current_month+=1;
+            current_month += 1;
             int current_day = cal.get(Calendar.DAY_OF_MONTH);
 
 //            Log.i("current_day",Integer.toString(current_day));
@@ -93,11 +92,11 @@ public class TaskListadapter extends RecyclerView.Adapter {
 //            Log.i("current_year",Integer.toString(current_year));
 
 
-            if ((year < current_year) || (year== current_year && month<current_month) || (year== current_year && month==current_month && day<current_day)){
-                failed=true;
+            if ((year < current_year) || (year == current_year && month < current_month) || (year == current_year && month == current_month && day < current_day)) {
+                failed = true;
             }
 
-            if (failed){
+            if (failed) {
                 TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
             }
 
@@ -109,10 +108,14 @@ public class TaskListadapter extends RecyclerView.Adapter {
                     if (isChecked) {
                         task.setIs_done(true);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.is_done_task));
+
                     } else if(!finalFailed) {
+
+                    } else if (!finalFailed) {
+
                         task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.background_for_each_task));
-                    }else {
+                    } else {
                         task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
                     }
