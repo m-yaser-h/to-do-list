@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,17 +71,26 @@ public class TaskListadapter extends RecyclerView.Adapter {
             TaskText.setText(task.getTitle());
             is_done.setChecked(task.isIs_done());
 
-
+            boolean failed = false;
             String[] dates = task.getDate().split("/");
             int day = Integer.parseInt(dates[0]);
             int month = Integer.parseInt(dates[1]);
             int year = Integer.parseInt(dates[2]);
+//            Log.i("day",dates[0]);
+//            Log.i("month",dates[1]);
+//            Log.i("year",dates[2]);
 
-            boolean failed = false;
+
+
             Calendar cal = Calendar.getInstance();
             int current_year = cal.get(Calendar.YEAR);
             int current_month = cal.get(Calendar.MONTH);
+            current_month+=1;
             int current_day = cal.get(Calendar.DAY_OF_MONTH);
+
+//            Log.i("current_day",Integer.toString(current_day));
+//            Log.i("current_month",Integer.toString(current_month));
+//            Log.i("current_year",Integer.toString(current_year));
 
 
             if ((year < current_year) || (year== current_year && month<current_month) || (year== current_year && month==current_month && day<current_day)){
@@ -103,6 +113,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
                         task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.background_for_each_task));
                     }else {
+                        task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
                     }
                 }
