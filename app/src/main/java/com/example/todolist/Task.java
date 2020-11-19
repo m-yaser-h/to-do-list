@@ -7,6 +7,7 @@ public class Task {
     private String description;
     private String date;
     private boolean is_done;
+    private boolean is_failed;
 
     public Task(String title, String description, String date) {
         this.title = title;
@@ -34,6 +35,14 @@ public class Task {
 
     public void setIs_done(boolean is_done) {
         this.is_done = is_done;
+    }
+
+    public boolean isIs_failed() {
+        return is_failed;
+    }
+
+    public void setIs_failed(boolean is_failed) {
+        this.is_failed = is_failed;
     }
 }
 
