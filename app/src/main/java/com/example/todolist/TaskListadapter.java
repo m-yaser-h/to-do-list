@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class TaskListadapter extends RecyclerView.Adapter {
@@ -27,19 +28,19 @@ public class TaskListadapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task, parent, false);
         return new TaskViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        TaskViewHolder tvh = (TaskViewHolder)holder;
+        TaskViewHolder tvh = (TaskViewHolder) holder;
         tvh.bind(list.get(position));
         tvh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),Detail_Of_Task.class);
-                intent.putExtra("position",position);
+                Intent intent = new Intent(v.getContext(), Detail_Of_Task.class);
+                intent.putExtra("position", position);
                 v.getContext().startActivity(intent);
             }
         });
@@ -51,7 +52,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
     }
 
 
-    private class TaskViewHolder extends RecyclerView.ViewHolder{
+    private class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView TaskText;
         Switch is_done;
         Context context;
@@ -65,46 +66,47 @@ public class TaskListadapter extends RecyclerView.Adapter {
         }
 
 
-        void bind(final Task task){
+        void bind(final Task task) {
             TaskText.setText(task.getTitle());
             is_done.setChecked(task.isIs_done());
 
 
+            String[] dates = task.getDate().split("/");
+            int day = Integer.parseInt(dates[0]);
+            int month = Integer.parseInt(dates[1]);
+            int year = Integer.parseInt(dates[2]);
 
+            boolean failed = false;
+            Calendar cal = Calendar.getInstance();
+            int current_year = cal.get(Calendar.YEAR);
+            int current_month = cal.get(Calendar.MONTH);
+            int current_day = cal.get(Calendar.DAY_OF_MONTH);
+
+
+            if ((year < current_year) || (year== current_year && month<current_month) || (year== current_year && month==current_month && day<current_day)){
+                failed=true;
+            }
+
+            if (failed){
+                TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
+            }
+
+
+            final boolean finalFailed = failed;
             is_done.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked)
+                    if (isChecked) {
                         task.setIs_done(true);
-                    else
+                        TaskText.setBackground(context.getResources().getDrawable(R.drawable.is_done_task));
+                    } else if(!finalFailed) {
                         task.setIs_done(false);
+                        TaskText.setBackground(context.getResources().getDrawable(R.drawable.background_for_each_task));
+                    }else {
+                        TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
+                    }
                 }
             });
-
-
-//            TaskText.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    Intent intent = new Intent(context , Detail_Of_Task.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("title",task.getTitle());
-//                    bundle.putString("description",task.getDescription());
-//                    bundle.putString("date",task.getDate());
-//                    bundle.putBoolean("is_done",task.isIs_done());
-//                    intent.putExtras(bundle);
-//                    context .startActivity(intent);
-//
-//
-//                }
-//            });
-
-
-
         }
-
-
     }
-
-
 }

@@ -37,10 +37,10 @@ public class Add_page_activity extends AppCompatActivity {
         setContentView(R.layout.activity_add_to_do_list);
 
         Button button = this.findViewById(R.id.add_button);
-        final EditText title_edit_text = (EditText)findViewById(R.id.title_editText);
-        final EditText description_edit_text = (EditText)findViewById(R.id.description_editText);
+        final EditText title_edit_text = findViewById(R.id.title_editText);
+        final EditText description_edit_text = findViewById(R.id.description_editText);
         final TextView date_edit_text = findViewById(R.id.tvDate);
-        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        mDisplayDate = findViewById(R.id.tvDate);
 
         final Intent intent = new Intent(this, MainActivity.class);
 
@@ -51,16 +51,13 @@ public class Add_page_activity extends AppCompatActivity {
                 String title = title_edit_text.getText().toString();
                 String descriptoin = description_edit_text.getText().toString();
                 String date = date_edit_text.getText().toString();
-                Task t1 = new Task(title,descriptoin,date);
+                Task t1 = new Task(title, descriptoin, date);
                 list.add(t1);
                 MainActivity.adapter.notifyDataSetChanged();
 
                 startActivity(intent);
             }
         });
-
-
-
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,16 +81,12 @@ public class Add_page_activity extends AppCompatActivity {
                 month += 1;
                 String date = dayOfMonth + "/" + month + "/" + year;
                 mDisplayDate.setText(date);
-
             }
         };
     }
 
 
-
-
-
-    }
+}
 
 
 
