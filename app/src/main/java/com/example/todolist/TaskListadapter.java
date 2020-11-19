@@ -109,7 +109,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
                     if (isChecked) {
                         task.setIs_done(true);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.is_done_task));
-                    }else if(!finalFailed) {
+                    } else if(!finalFailed) {
                         task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.background_for_each_task));
                     }else {
