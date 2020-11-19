@@ -39,6 +39,9 @@ public class Detail_Of_Task extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 MainActivity.list.get(position).setIs_done(isChecked);
+                if (isChecked == true){
+                    MainActivity.list.get(position).setIs_failed(false);
+                }
                 MainActivity.adapter.notifyDataSetChanged();
 
             }

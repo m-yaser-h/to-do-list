@@ -71,7 +71,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
             TaskText.setText(task.getTitle());
             is_done.setChecked(task.isIs_done());
 
-            boolean failed = false;
+//            boolean failed = false;
             String[] dates = task.getDate().split("/");
             int day = Integer.parseInt(dates[0]);
             int month = Integer.parseInt(dates[1]);
@@ -92,16 +92,19 @@ public class TaskListadapter extends RecyclerView.Adapter {
 //            Log.i("current_year",Integer.toString(current_year));
 
 
-            if ((year < current_year) || (year == current_year && month < current_month) || (year == current_year && month == current_month && day < current_day)) {
-                failed = true;
+
+            if ((year < current_year) || (year== current_year && month<current_month) || (year== current_year && month==current_month && day<current_day)){
+//                failed=true;
+                task.setIs_failed(true);
             }
 
-            if (failed) {
+            if (task.isIs_failed()){
+
                 TaskText.setBackground(context.getResources().getDrawable(R.drawable.failed_task));
             }
 
 
-            final boolean finalFailed = failed;
+//            final boolean finalFailed = failed;
             is_done.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -109,9 +112,7 @@ public class TaskListadapter extends RecyclerView.Adapter {
                         task.setIs_done(true);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.is_done_task));
 
-                    } else if(!finalFailed) {
-
-                    } else if (!finalFailed) {
+                    }else if(!task.isIs_failed()) {
 
                         task.setIs_done(false);
                         TaskText.setBackground(context.getResources().getDrawable(R.drawable.background_for_each_task));
